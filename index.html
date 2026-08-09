@@ -81,6 +81,71 @@
       </div>
     </section>
 
+    <section id="vault" class="section vault-section">
+  <div class="shell">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">01A / THE TAX VAULT</p>
+        <h2>The Vault is<br><em>closing.</em></h2>
+      </div>
+      <span class="vault-status" id="vaultStatus">
+        <i></i> VAULT OPEN
+      </span>
+    </div>
+
+    <div class="vault">
+      <div class="vault-frame">
+        <div class="vault-door vault-door-left" id="vaultLeft"></div>
+        <div class="vault-door vault-door-right" id="vaultRight"></div>
+
+        <div class="vault-core">
+          <span class="vault-lock" id="vaultLock">OPEN</span>
+          <strong id="vaultPercent">0%</strong>
+          <small>OF TARGET</small>
+        </div>
+      </div>
+
+      <div class="vault-info">
+        <div>
+          <span class="label">VAULT TARGET</span>
+          <strong>$100,000</strong>
+        </div>
+
+        <div>
+          <span class="label">CURRENT</span>
+          <strong id="vaultAmount">$0.00</strong>
+        </div>
+
+        <div>
+          <span class="label">REMAINING</span>
+          <strong id="vaultRemaining">$100,000</strong>
+        </div>
+      </div>
+
+      <div class="vault-message" id="vaultMessage">
+        The Sheriff is accepting taxes.
+        The Vault remains open.
+      </div>
+
+      <div class="snapshot-banner" id="snapshotBanner">
+        <span>📸</span>
+        <div>
+          <strong>SNAPSHOT TAKEN</strong>
+          <p>The Vault is sealed. The qualified taxpayer roll is now final.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="late-notice" id="lateNotice">
+      <strong>LATE DEPOSIT</strong>
+      <span>
+        The Vault has already closed. This deposit is not qualified
+        for the $100K snapshot.
+      </span>
+    </div>
+  </div>
+</section>
+
     <section id="tax-code" class="section paper-section">
       <div class="shell">
         <p class="eyebrow">02 / THE TAX CODE</p>
