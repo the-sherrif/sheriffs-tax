@@ -1,228 +1,374 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="The Sheriff's Tax — Congratulations. You're Being Taxed.">
-  <title>The Sheriff's Tax — Congratulations. You're Being Taxed.</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Sheriff's Tax 🤠</title>
+<meta name="description" content="Congratulations. You're Being Taxed.">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#11100d;color:#f4ead8;font-family:Arial,Helvetica,sans-serif}
+a{text-decoration:none;color:inherit}
+.container{width:min(1100px,92%);margin:auto}
+nav{position:sticky;top:0;z-index:10;background:#11100dee;border-bottom:1px solid #3b3429;padding:16px 0}
+.nav{display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900;letter-spacing:1px}
+.badge{background:#d6a84f;color:#17130d;padding:6px 10px;border-radius:5px;font-size:12px;font-weight:900}
+.hero{text-align:center;padding:70px 0 55px}
+.hero img{width:min(900px,100%);border-radius:12px;border:1px solid #554a39;margin-bottom:35px}
+.kicker{color:#d6a84f;font-weight:900;letter-spacing:3px;font-size:13px}
+h1{font-size:clamp(45px,9vw,90px);line-height:.9;margin:18px 0}
+h2{font-size:34px;margin:0 0 15px}
+p{color:#bdb3a3;line-height:1.65}
+.hero p{max-width:650px;margin:20px auto;font-size:18px}
+.btn{display:inline-block;border:0;background:#d6a84f;color:#17130d;padding:15px 22px;border-radius:6px;font-weight:900;cursor:pointer;margin:8px}
+.btn.dark{background:#29251f;color:#f4ead8;border:1px solid #514838}
+section{padding:70px 0;border-top:1px solid #302b24}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.card{background:#181612;border:1px solid #3b3429;border-radius:10px;padding:25px}
+.stat{font-size:42px;font-weight:900;color:#d6a84f}
+.progress{height:14px;background:#2b261f;border-radius:20px;overflow:hidden;margin:18px 0}
+.progress div{height:100%;width:0;background:#d6a84f;transition:width 1s}
+.address{background:#0c0b09;border:1px dashed #66563d;padding:15px;border-radius:6px;word-break:break-all;font-family:monospace;color:#d6a84f}
+table{width:100%;border-collapse:collapse}
+td{padding:14px 8px;border-bottom:1px solid #302b24}
+.rank{color:#d6a84f;font-weight:900}
+.receipt{background:#efe3ca;color:#18130d;padding:28px;border-radius:4px;max-width:560px;margin:25px auto;display:none;box-shadow:8px 8px 0 #66563d}
+.receipt h3{font-family:Georgia,serif;font-size:28px;margin:0 0 20px}
+.receipt p{color:#3d352a;margin:8px 0}
+input{width:100%;padding:14px;background:#0d0c0a;border:1px solid #514838;color:#f4ead8;border-radius:5px;margin:6px 0 12px}
+label{font-size:12px;font-weight:900;color:#d6a84f}
+.center{text-align:center}
+.quote{font-family:Georgia,serif;font-size:25px;color:#eee0c7}
+footer{text-align:center;padding:60px 0;color:#70685b}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.hero{padding-top:40px}h1{font-size:54px}.stat{font-size:34px}}
+</style>
 </head>
+
 <body>
-  <div class="notice">
-    <span>THE SHERIFF'S TAX</span>
-    <span>VOLUNTARY TAXATION • JURISDICTION: THE ENTIRE TIMELINE</span>
-  </div>
 
-  <header class="nav shell">
-    <a class="brand" href="#top">🤠 THE SHERIFF'S TAX</a>
-    <nav>
-      <a href="#tax-code">Tax Code</a>
-      <a href="#treasury">Treasury</a>
-      <a href="#roll">Taxpayer Roll</a>
-      <a href="#audit">Audit</a>
-    </nav>
-    <a class="nav-cta" href="#pay">PAY YOUR TAX</a>
-  </header>
+<nav>
+<div class="container nav">
+<div class="logo">🤠 THE SHERIFF'S TAX</div>
+<div class="badge">JURISDICTION: THE TIMELINE</div>
+</div>
+</nav>
 
-  <main id="top">
-    <section class="hero shell">
-      <div class="hero-copy">
-        <p class="eyebrow">OFFICE OF VOLUNTARY TAXATION • FORM SHF-001</p>
-        <h1>Congratulations.<br><em>You're Being Taxed.</em></h1>
-        <p class="lede">
-          The Sheriff has arrived. No token. No yield. No roadmap.
-          Just one voluntary tax, one Treasury, and absolutely no promises.
-        </p>
-        <div class="actions">
-          <a class="button button-dark" href="#pay">PAY YOUR TAX <span>↗</span></a>
-          <a class="button button-outline" href="#tax-code">READ THE TAX CODE</a>
-        </div>
-        <p class="micro">100% voluntary • 100% tax • 0% utility • verify everything on-chain</p>
-      </div>
+<main>
 
-      <div class="hero-card">
-        <div class="wanted-stamp">OFFICIAL</div>
-        <div class="badge">★</div>
-        <p class="card-kicker">THE LAW</p>
-        <h2>Pay your dues.<br>Ask fewer questions.</h2>
-        <p>The Sheriff is corrupt. He told you that on day one.</p>
-        <div class="signature">— THE SHERIFF</div>
-      </div>
-    </section>
+<section class="hero">
+<div class="container">
 
-    <section class="ticker" aria-label="Sheriff ticker">
-      <div>NO TOKEN</div><div>NO AIRDROP</div><div>NO UTILITY</div><div>NO REFUNDS</div><div>NO EXCEPTIONS</div><div>JUST TAXES</div>
-    </section>
+<img src="x-banner.png" alt="Congratulations. You're Being Taxed.">
 
-    <section id="treasury" class="section shell">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">01 / THE TREASURY</p>
-          <h2>The people are paying.</h2>
-        </div>
-        <span class="status"><i></i> TAX SEASON OPEN</span>
-      </div>
+<div class="kicker">WELCOME, CITIZEN</div>
+<h1>CONGRATULATIONS.<br>YOU'RE BEING TAXED.</h1>
 
-      <div class="treasury-grid">
-        <div class="big-stat">
-          <span class="label">CURRENT TREASURY</span>
-          <strong id="treasuryAmount">$0.00</strong>
-          <div class="progress"><span id="progressBar"></span></div>
-          <div class="stat-row"><span><b id="citizenCount">0</b> citizens</span><span><b>$100,000</b> target</span></div>
-        </div>
-        <div class="data-card">
-          <div><span>Tax rate</span><strong>100%</strong></div>
-          <div><span>Public services</span><strong>0</strong></div>
-          <div><span>Refunds</span><strong>Absolutely not</strong></div>
-          <div><span>Roadmap</span><strong>There is none</strong></div>
-        </div>
-      </div>
-    </section>
+<p>
+No token. No roadmap. No fake utility.
+Just one Sheriff, one Treasury and the most honest tax in crypto.
+</p>
 
-    <section id="tax-code" class="section paper-section">
-      <div class="shell">
-        <p class="eyebrow">02 / THE TAX CODE</p>
-        <div class="code-layout">
-          <div>
-            <h2>The rules are<br><em>painfully simple.</em></h2>
-            <p class="lede">Every protocol has a tax code. Ours just happens to be honest about it.</p>
-          </div>
-          <div class="rules">
-            <article><b>ARTICLE I</b><h3>You pay.</h3><p>Send ETH to the Treasury voluntarily.</p></article>
-            <article><b>ARTICLE II</b><h3>The Sheriff keeps it.</h3><p>There is no claim on future services or returns.</p></article>
-            <article><b>ARTICLE III</b><h3>You get nothing.</h3><p>No token. No airdrop. No yield. No utility.</p></article>
-            <article><b>ARTICLE IV</b><h3>We call it a tax.</h3><p>Because at least one of us is being honest.</p></article>
-          </div>
-        </div>
-      </div>
-    </section>
+<a class="btn" href="#treasury">PAY YOUR TAXES</a>
+<a class="btn dark" href="#tax-code">READ THE TAX CODE</a>
 
-    <section id="pay" class="section shell">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">03 / VOLUNTARY TAX DECLARATION</p>
-          <h2>Pay the Sheriff.</h2>
-        </div>
-        <span class="form-id">FORM SHF-001</span>
-      </div>
+</div>
+</section>
 
-      <div class="pay-grid">
-        <div class="form-card">
-          <label for="wallet">Citizen wallet</label>
-          <input id="wallet" type="text" placeholder="0x..." autocomplete="off">
+<section id="treasury">
+<div class="container">
 
-          <label for="amount">Tax amount</label>
-          <input id="amount" type="text" placeholder="0.10 ETH" inputmode="decimal">
+<div class="center">
+<div class="kicker">THE TREASURY</div>
+<h2>Tax Season Is Open.</h2>
+<p>Send ETH. Receive nothing. Become a citizen.</p>
+</div>
 
-          <label>Reason for payment</label>
-          <div class="choices">
-            <button type="button" data-reason="Civic Duty">Civic Duty</button>
-            <button type="button" data-reason="Poor Financial Decisions">Poor Financial Decisions</button>
-            <button type="button" data-reason="The Sheriff Asked Nicely">The Sheriff Asked Nicely</button>
-            <button type="button" data-reason="I Don't Know Either">I Don't Know Either</button>
-          </div>
+<div class="card">
+<div class="center">
+<div class="stat" id="treasuryAmount">$0</div>
+<p>of $100,000 collected</p>
+</div>
 
-          <div class="ack">
-            <input id="ack" type="checkbox">
-            <label for="ack">I understand this is voluntary, I receive nothing in return, and I should verify the Treasury address before sending anything.</label>
-          </div>
+<div class="progress">
+<div id="progress"></div>
+</div>
 
-          <button class="button button-dark full" id="payButton" type="button">GENERATE TAX INSTRUCTIONS</button>
-          <p class="micro">This starter site does not process payments. Replace the placeholder Treasury address before launch.</p>
-        </div>
+<div class="center">
+<strong id="citizens">0 CITIZENS</strong>
+<p>Tax Season: <span class="rank">OPEN</span></p>
+</div>
 
-        <aside class="receipt" id="receipt">
-          <div class="receipt-top"><span>TAX RECEIPT</span><span>VOID / FOR THE BIT</span></div>
-          <div class="receipt-main">
-            <span class="receipt-label">THE SHERIFF'S TREASURY</span>
-            <code id="treasuryAddress">0xYOUR_TREASURY_ADDRESS</code>
-            <button class="copy" data-copy="treasuryAddress">COPY ADDRESS</button>
-          </div>
-          <div class="receipt-lines">
-            <div><span>Taxpayer</span><b id="receiptWallet">NOT PROVIDED</b></div>
-            <div><span>Amount</span><b id="receiptAmount">NOT PROVIDED</b></div>
-            <div><span>Reason</span><b id="receiptReason">CIVIC DUTY</b></div>
-          </div>
-          <div class="receipt-bottom">THE SHERIFF THANKS YOU FOR YOUR REGRETTABLE CONTRIBUTION.</div>
-        </aside>
-      </div>
-    </section>
+<div class="address" id="wallet">0xYOUR_TREASURY_ADDRESS</div>
 
-    <section id="roll" class="section dark-section">
-      <div class="shell">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">04 / THE TAXPAYER ROLL</p>
-            <h2>Publicly taxed.<br><em>Proudly displayed.</em></h2>
-          </div>
-          <span class="status light"><i></i> LIVE LEDGER</span>
-        </div>
+<div class="center">
+<button class="btn dark" onclick="copyWallet()">COPY TREASURY</button>
+<button class="btn" onclick="showReceipt()">GENERATE TAX RECEIPT</button>
+</div>
 
-        <div class="roll-table">
-          <div class="roll-row header"><span>RANK</span><span>CITIZEN</span><span>PAID</span><span>STATUS</span></div>
-          <div class="roll-row"><span>01</span><span>— awaiting first citizen —</span><span>0 ETH</span><span>THE SHERIFF IS WATCHING</span></div>
-          <div class="roll-row"><span>02</span><span>—</span><span>—</span><span>—</span></div>
-          <div class="roll-row"><span>03</span><span>—</span><span>—</span><span>—</span></div>
-        </div>
+</div>
+</div>
+</section>
 
-        <div class="rank-grid">
-          <div><b>$10+</b><span>Concerned Citizen</span></div>
-          <div><b>$100+</b><span>Law-Abiding Citizen</span></div>
-          <div><b>$500+</b><span>Model Citizen</span></div>
-          <div><b>$1K+</b><span>Tax Enthusiast</span></div>
-          <div><b>$5K+</b><span>Deputy</span></div>
-          <div><b>$10K+</b><span>Absolutely Insane</span></div>
-        </div>
-      </div>
-    </section>
+<section id="tax-code">
+<div class="container">
 
-    <section id="deputy" class="section shell">
-      <div class="referral-card">
-        <div>
-          <p class="eyebrow">05 / SPREAD THE TAX</p>
-          <h2>Recruit another citizen.</h2>
-          <p class="lede">You don't refer people. You deputize them. Generate a link, send it to an outlaw, and let the Sheriff handle the rest.</p>
-        </div>
-        <div class="referral-box">
-          <label for="deputyName">Your X handle / nickname</label>
-          <input id="deputyName" type="text" placeholder="e.g. @ray">
-          <div class="generated-link" id="generatedLink">Enter your name to generate your Deputy link.</div>
-          <div class="actions">
-            <button class="button button-dark" id="generateLink" type="button">GENERATE LINK</button>
-            <button class="button button-outline" id="copyLink" type="button">COPY LINK</button>
-          </div>
-          <p id="shareMessage" class="micro"></p>
-        </div>
-      </div>
-    </section>
+<div class="kicker">ARTICLE I</div>
+<h2>The Sheriff's Tax Code</h2>
 
-    <section id="audit" class="section audit-section">
-      <div class="shell audit">
-        <p class="eyebrow">06 / THE FINAL AUDIT</p>
-        <div class="seal">🔒</div>
-        <h2>Locked until<br><em>$100,000.</em></h2>
-        <p>When the Treasury reaches the target, the Sheriff opens the books and reveals what happened.</p>
-        <div class="audit-line"><span>$0</span><span>$100,000</span></div>
-        <div class="progress light-progress"><span id="auditBar"></span></div>
-        <p class="micro">The Audit unlocks at the end of Tax Season.</p>
-      </div>
-    </section>
+<div class="grid">
+<div class="card">
+<h3>§1 — YOU PAY</h3>
+<p>You send ETH to the Sheriff's Treasury. This is your voluntary civic duty.</p>
+</div>
 
-    <section class="closing shell">
-      <p class="eyebrow">OFFICE OF VOLUNTARY TAXATION</p>
-      <h2>Pay your taxes.<br><em>Get absolutely nothing.</em></h2>
-      <p>The Sheriff guarantees it.</p>
-      <a class="button button-dark" href="#pay">ENTER JURISDICTION ↗</a>
-    </section>
-  </main>
+<div class="card">
+<h3>§2 — THE SHERIFF KEEPS IT</h3>
+<p>There are no refunds, distributions or promises of future rewards.</p>
+</div>
 
-  <footer class="footer shell">
-    <span>THE SHERIFF'S TAX © 2026</span>
-    <span>NO TOKEN • NO UTILITY • NO PROMISES</span>
-    <a href="#top">BACK TO TOP ↑</a>
-  </footer>
+<div class="card">
+<h3>§3 — YOU GET NOTHING</h3>
+<p>No token. No airdrop. No yield. No utility. You get exactly what was promised.</p>
+</div>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="script.js"></script>
+<div class="card">
+<h3>§4 — THE SHERIFF IS HONEST</h3>
+<p>Other projects hide their taxes behind words like allocation and alignment. We wear the badge.</p>
+</div>
+</div>
+
+<p class="quote center">
+"You don't pay because you have to.<br>
+You pay because you want to."
+</p>
+
+</div>
+</section>
+
+<section id="receipt">
+<div class="container center">
+
+<div class="kicker">OFFICIAL DOCUMENT</div>
+<h2>Your Civic Duty Receipt</h2>
+<p>Every citizen deserves proof of their poor financial decision.</p>
+
+<div class="card">
+<label>YOUR X USERNAME</label>
+<input id="username" placeholder="@degen">
+
+<label>AMOUNT PAID</label>
+<input id="amount" placeholder="0.42 ETH">
+
+<button class="btn" onclick="createReceipt()">STAMP MY RECEIPT</button>
+</div>
+
+<div class="receipt" id="receiptCard">
+<h3>🤠 OFFICIAL TAX RECEIPT</h3>
+<hr>
+<p><strong>CITIZEN:</strong> <span id="rUser"></span></p>
+<p><strong>TAX PAID:</strong> <span id="rAmount"></span></p>
+<p><strong>TAX CLASS:</strong> <span id="rClass"></span></p>
+<p><strong>STATUS:</strong> PAID</p>
+<p><strong>REFUND:</strong> DENIED</p>
+<hr>
+<p><strong>THE SHERIFF HAS BEEN PAID.</strong></p>
+</div>
+
+<button class="btn dark" id="shareBtn" style="display:none" onclick="shareX()">
+POST MY RECEIPT TO X
+</button>
+
+</div>
+</section>
+
+<section id="roll">
+<div class="container">
+
+<div class="kicker">PUBLIC RECORD</div>
+<h2>The Taxpayer Roll</h2>
+<p>The people who willingly paid their dues.</p>
+
+<div class="card">
+<table>
+<tr><td>🥇 <strong>Anonymous Citizen</strong></td><td class="rank">2.10 ETH</td><td>PLATINUM</td></tr>
+<tr><td>🥈 <strong>Anonymous Citizen</strong></td><td class="rank">0.50 ETH</td><td>GOLD</td></tr>
+<tr><td>🥉 <strong>Anonymous Citizen</strong></td><td class="rank">0.30 ETH</td><td>SILVER</td></tr>
+</table>
+</div>
+
+</div>
+</section>
+
+<section id="deputy">
+<div class="container center">
+
+<div class="kicker">THE SHERIFF NEEDS HELP</div>
+<h2>Deputize An Outlaw</h2>
+
+<p>
+The Sheriff can't collect everyone's taxes alone.<br>
+Recruit citizens. Spread the jurisdiction.
+</p>
+
+<div class="card">
+<label>YOUR NAME</label>
+<input id="deputyName" placeholder="Your X username">
+
+<button class="btn" onclick="generateDeputy()">
+GENERATE MY DEPUTY LINK
+</button>
+
+<input id="deputyLink" readonly style="display:none">
+
+<p id="deputyMessage"></p>
+</div>
+
+</div>
+</section>
+
+<section id="audit">
+<div class="container center">
+
+<div class="kicker">THE FINAL RECKONING</div>
+<h2>THE $100K AUDIT</h2>
+
+<p>
+When the Treasury reaches $100,000,
+the Sheriff publishes the final audit.
+</p>
+
+<div class="card">
+<div class="stat">$100,000</div>
+<p>THE TREASURY TARGET</p>
+<p>
+No public works.<br>
+No ecosystem grants.<br>
+No infrastructure.<br>
+No excuses.
+</p>
+</div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container">
+<p>THE SHERIFF'S TAX © 2026</p>
+<p>*spurs jingling into the sunset*</p>
+</div>
+</footer>
+
+<script>
+
+let treasury = 0;
+
+function copyWallet(){
+const wallet=document.getElementById("wallet").innerText;
+navigator.clipboard.writeText(wallet);
+alert("Treasury address copied.");
+}
+
+function showReceipt(){
+document.getElementById("receipt").scrollIntoView({behavior:"smooth"});
+}
+
+function createReceipt(){
+
+const username=document.getElementById("username").value || "@anonymous";
+const amount=document.getElementById("amount").value || "0 ETH";
+
+let n=parseFloat(amount);
+let rank="CONCERNED CITIZEN";
+
+if(n>=10) rank="THE SHERIFF'S FAVORITE";
+else if(n>=5) rank="DEPUTY";
+else if(n>=1) rank="TAX ENTHUSIAST";
+else if(n>=0.5) rank="MODEL CITIZEN";
+else if(n>=0.1) rank="LAW-ABIDING CITIZEN";
+
+document.getElementById("rUser").innerText=username;
+document.getElementById("rAmount").innerText=amount;
+document.getElementById("rClass").innerText=rank;
+
+document.getElementById("receiptCard").style.display="block";
+document.getElementById("shareBtn").style.display="inline-block";
+
+document.getElementById("receiptCard").scrollIntoView({behavior:"smooth"});
+}
+
+function shareX(){
+
+const user=document.getElementById("username").value || "@anonymous";
+const amount=document.getElementById("amount").value || "0 ETH";
+
+const text=
+`I paid my taxes to The Sheriff 🤠
+
+Tax paid: ${amount}
+Refund: DENIED
+Benefits received: NONE
+
+Congratulations. You're Being Taxed.
+
+${window.location.href}`;
+
+window.open(
+"https://twitter.com/intent/tweet?text="+encodeURIComponent(text),
+"_blank"
+);
+}
+
+function generateDeputy(){
+
+const name=document.getElementById("deputyName").value.trim();
+
+if(!name){
+alert("The Sheriff needs to know your name, citizen.");
+return;
+}
+
+const slug=name.replace("@","").replace(/[^a-zA-Z0-9]/g,"-").toLowerCase();
+
+const link=
+window.location.origin+
+window.location.pathname+
+"?deputy="+slug;
+
+const box=document.getElementById("deputyLink");
+
+box.value=link;
+box.style.display="block";
+
+navigator.clipboard.writeText(link);
+
+document.getElementById("deputyMessage").innerText=
+"Your Deputy link has been copied. Go recruit some taxpayers.";
+}
+
+const target=100000;
+
+function updateProgress(){
+
+const percentage=Math.min((treasury/target)*100,100);
+
+document.getElementById("treasuryAmount").innerText=
+"$"+treasury.toLocaleString();
+
+document.getElementById("progress").style.width=
+percentage+"%";
+
+document.getElementById("citizens").innerText=
+"0 CITIZENS";
+
+}
+
+updateProgress();
+
+</script>
+
 </body>
 </html>
