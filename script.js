@@ -95,6 +95,61 @@ function toast(message) {
   );
 }
 
+function updateVault() {
+  const amount = state.treasury;
+  const pct = Math.min((amount / VAULT_TARGET) * 100, 100);
+  const remaining = Math.max(VAULT_TARGET - amount, 0);
+
+  $("vaultAmount").textContent = money(amount);
+  $("vaultRemaining").textContent = money(remaining);
+  $("vaultPercent").textContent = Math.floor(pct) + "%";
+
+  if (vaultClosed) {
+    $("vaultStatus").innerHTML = "<i></i> VAULT SEALED";
+    $("vaultLock").textContent = "SEALED";
+    $("vaultMessage").textContent =
+      "The $100,000 target has been reached. The Sheriff has taken the snapshot.";
+
+    $("snapshotBanner").classList.add("show");
+    $("lateNotice").classList.add("show");
+
+    $("vaultLeft").style.transform = "translateX(0)";
+    $("vaultRight").style.transform = "translateX(0)";
+
+    return;
+  }
+
+  $("snapshotBanner").classList.remove("show");
+  $("lateNotice").classList.remove("show");
+
+  if (pct >= 95) {
+    $("vaultStatus").innerHTML = "<i></i> FINAL CALL";
+    $("vaultLock").textContent = "FINAL";
+    $("vaultMessage").textContent =
+      "The Vault is almost closed. Every qualified deposit counts.";
+
+  } else if (pct >= 75) {
+    $("vaultStatus").innerHTML = "<i></i> VAULT CLOSING";
+    $("vaultLock").textContent = "CLOSING";
+    $("vaultMessage").textContent =
+      "The Sheriff is getting nervous. The Vault is closing.";
+
+  } else {
+    $("vaultStatus").innerHTML = "<i></i> VAULT OPEN";
+    $("vaultLock").textContent = "OPEN";
+    $("vaultMessage").textContent =
+      "The Sheriff is accepting taxes. The Vault remains open.";
+  }
+
+  const doorAmount = pct * 0.45;
+
+  $("vaultLeft").style.transform =
+    `translateX(${doorAmount}%)`;
+
+  $("vaultRight").style.transform =
+    `translateX(-${doorAmount}%)`;
+}
+
 /* -------------------------
    PAYMENT FORM
 ------------------------- */
