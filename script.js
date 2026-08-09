@@ -152,6 +152,24 @@ function updateVault() {
     `translateX(-${doorAmount}%)`;
 }
 
+function closeVault() {
+  if (vaultClosed) return;
+
+  vaultClosed = true;
+  snapshotTaken = true;
+
+  $("vaultStatus").innerHTML = "<i></i> VAULT SEALED";
+  $("vaultLock").textContent = "SEALED";
+
+  $("vaultMessage").textContent =
+    "SNAPSHOT TAKEN. THE QUALIFIED TAXPAYER ROLL IS FINAL.";
+
+  $("snapshotBanner").classList.add("show");
+  $("lateNotice").classList.add("show");
+
+  toast("THE VAULT IS SEALED. SNAPSHOT TAKEN.");
+}
+
 /* -------------------------
    PAYMENT FORM
 ------------------------- */
@@ -384,6 +402,11 @@ async function refreshTreasury() {
       usdgBalance;
 
     updateTreasury();
+
+    /* Check if Treasury has crossed the threshold */
+    if (state.treasury >= VAULT_TARGET) {
+      closeVault();
+    }
 
     console.log(
       "Sheriff Treasury:",
