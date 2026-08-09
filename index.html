@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Sheriff's Tax — Congratulations. You're Being Taxed.">
+  <title>The Sheriff's Tax — Congratulations. You're Being Taxed.</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="notice">
+    <span>THE SHERIFF'S TAX</span>
+    <span>VOLUNTARY TAXATION • JURISDICTION: THE ENTIRE TIMELINE</span>
+  </div>
+
+  <header class="nav shell">
+    <a class="brand" href="#top">🤠 THE SHERIFF'S TAX</a>
+    <nav>
+      <a href="#tax-code">Tax Code</a>
+      <a href="#treasury">Treasury</a>
+      <a href="#roll">Taxpayer Roll</a>
+      <a href="#audit">Audit</a>
+    </nav>
+    <a class="nav-cta" href="#pay">PAY YOUR TAX</a>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-copy">
+        <p class="eyebrow">OFFICE OF VOLUNTARY TAXATION • FORM SHF-001</p>
+        <h1>Congratulations.<br><em>You're Being Taxed.</em></h1>
+        <p class="lede">
+          The Sheriff has arrived. No token. No yield. No roadmap.
+          Just one voluntary tax, one Treasury, and absolutely no promises.
+        </p>
+        <div class="actions">
+          <a class="button button-dark" href="#pay">PAY YOUR TAX <span>↗</span></a>
+          <a class="button button-outline" href="#tax-code">READ THE TAX CODE</a>
+        </div>
+        <p class="micro">100% voluntary • 100% tax • 0% utility • verify everything on-chain</p>
+      </div>
+
+      <div class="hero-card">
+        <div class="wanted-stamp">OFFICIAL</div>
+        <div class="badge">★</div>
+        <p class="card-kicker">THE LAW</p>
+        <h2>Pay your dues.<br>Ask fewer questions.</h2>
+        <p>The Sheriff is corrupt. He told you that on day one.</p>
+        <div class="signature">— THE SHERIFF</div>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="Sheriff ticker">
+      <div>NO TOKEN</div><div>NO AIRDROP</div><div>NO UTILITY</div><div>NO REFUNDS</div><div>NO EXCEPTIONS</div><div>JUST TAXES</div>
+    </section>
+
+    <section id="treasury" class="section shell">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">01 / THE TREASURY</p>
+          <h2>The people are paying.</h2>
+        </div>
+        <span class="status"><i></i> TAX SEASON OPEN</span>
+      </div>
+
+      <div class="treasury-grid">
+        <div class="big-stat">
+          <span class="label">CURRENT TREASURY</span>
+          <strong id="treasuryAmount">$0.00</strong>
+          <div class="progress"><span id="progressBar"></span></div>
+          <div class="stat-row"><span><b id="citizenCount">0</b> citizens</span><span><b>$100,000</b> target</span></div>
+        </div>
+        <div class="data-card">
+          <div><span>Tax rate</span><strong>100%</strong></div>
+          <div><span>Public services</span><strong>0</strong></div>
+          <div><span>Refunds</span><strong>Absolutely not</strong></div>
+          <div><span>Roadmap</span><strong>There is none</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tax-code" class="section paper-section">
+      <div class="shell">
+        <p class="eyebrow">02 / THE TAX CODE</p>
+        <div class="code-layout">
+          <div>
+            <h2>The rules are<br><em>painfully simple.</em></h2>
+            <p class="lede">Every protocol has a tax code. Ours just happens to be honest about it.</p>
+          </div>
+          <div class="rules">
+            <article><b>ARTICLE I</b><h3>You pay.</h3><p>Send ETH to the Treasury voluntarily.</p></article>
+            <article><b>ARTICLE II</b><h3>The Sheriff keeps it.</h3><p>There is no claim on future services or returns.</p></article>
+            <article><b>ARTICLE III</b><h3>You get nothing.</h3><p>No token. No airdrop. No yield. No utility.</p></article>
+            <article><b>ARTICLE IV</b><h3>We call it a tax.</h3><p>Because at least one of us is being honest.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pay" class="section shell">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">03 / VOLUNTARY TAX DECLARATION</p>
+          <h2>Pay the Sheriff.</h2>
+        </div>
+        <span class="form-id">FORM SHF-001</span>
+      </div>
+
+      <div class="pay-grid">
+        <div class="form-card">
+          <label for="wallet">Citizen wallet</label>
+          <input id="wallet" type="text" placeholder="0x..." autocomplete="off">
+
+          <label for="amount">Tax amount</label>
+          <input id="amount" type="text" placeholder="0.10 ETH" inputmode="decimal">
+
+          <label>Reason for payment</label>
+          <div class="choices">
+            <button type="button" data-reason="Civic Duty">Civic Duty</button>
+            <button type="button" data-reason="Poor Financial Decisions">Poor Financial Decisions</button>
+            <button type="button" data-reason="The Sheriff Asked Nicely">The Sheriff Asked Nicely</button>
+            <button type="button" data-reason="I Don't Know Either">I Don't Know Either</button>
+          </div>
+
+          <div class="ack">
+            <input id="ack" type="checkbox">
+            <label for="ack">I understand this is voluntary, I receive nothing in return, and I should verify the Treasury address before sending anything.</label>
+          </div>
+
+          <button class="button button-dark full" id="payButton" type="button">GENERATE TAX INSTRUCTIONS</button>
+          <p class="micro">This starter site does not process payments. Replace the placeholder Treasury address before launch.</p>
+        </div>
+
+        <aside class="receipt" id="receipt">
+          <div class="receipt-top"><span>TAX RECEIPT</span><span>VOID / FOR THE BIT</span></div>
+          <div class="receipt-main">
+            <span class="receipt-label">THE SHERIFF'S TREASURY</span>
+            <code id="treasuryAddress">0xYOUR_TREASURY_ADDRESS</code>
+            <button class="copy" data-copy="treasuryAddress">COPY ADDRESS</button>
+          </div>
+          <div class="receipt-lines">
+            <div><span>Taxpayer</span><b id="receiptWallet">NOT PROVIDED</b></div>
+            <div><span>Amount</span><b id="receiptAmount">NOT PROVIDED</b></div>
+            <div><span>Reason</span><b id="receiptReason">CIVIC DUTY</b></div>
+          </div>
+          <div class="receipt-bottom">THE SHERIFF THANKS YOU FOR YOUR REGRETTABLE CONTRIBUTION.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="roll" class="section dark-section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">04 / THE TAXPAYER ROLL</p>
+            <h2>Publicly taxed.<br><em>Proudly displayed.</em></h2>
+          </div>
+          <span class="status light"><i></i> LIVE LEDGER</span>
+        </div>
+
+        <div class="roll-table">
+          <div class="roll-row header"><span>RANK</span><span>CITIZEN</span><span>PAID</span><span>STATUS</span></div>
+          <div class="roll-row"><span>01</span><span>— awaiting first citizen —</span><span>0 ETH</span><span>THE SHERIFF IS WATCHING</span></div>
+          <div class="roll-row"><span>02</span><span>—</span><span>—</span><span>—</span></div>
+          <div class="roll-row"><span>03</span><span>—</span><span>—</span><span>—</span></div>
+        </div>
+
+        <div class="rank-grid">
+          <div><b>$10+</b><span>Concerned Citizen</span></div>
+          <div><b>$100+</b><span>Law-Abiding Citizen</span></div>
+          <div><b>$500+</b><span>Model Citizen</span></div>
+          <div><b>$1K+</b><span>Tax Enthusiast</span></div>
+          <div><b>$5K+</b><span>Deputy</span></div>
+          <div><b>$10K+</b><span>Absolutely Insane</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="deputy" class="section shell">
+      <div class="referral-card">
+        <div>
+          <p class="eyebrow">05 / SPREAD THE TAX</p>
+          <h2>Recruit another citizen.</h2>
+          <p class="lede">You don't refer people. You deputize them. Generate a link, send it to an outlaw, and let the Sheriff handle the rest.</p>
+        </div>
+        <div class="referral-box">
+          <label for="deputyName">Your X handle / nickname</label>
+          <input id="deputyName" type="text" placeholder="e.g. @ray">
+          <div class="generated-link" id="generatedLink">Enter your name to generate your Deputy link.</div>
+          <div class="actions">
+            <button class="button button-dark" id="generateLink" type="button">GENERATE LINK</button>
+            <button class="button button-outline" id="copyLink" type="button">COPY LINK</button>
+          </div>
+          <p id="shareMessage" class="micro"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="audit" class="section audit-section">
+      <div class="shell audit">
+        <p class="eyebrow">06 / THE FINAL AUDIT</p>
+        <div class="seal">🔒</div>
+        <h2>Locked until<br><em>$100,000.</em></h2>
+        <p>When the Treasury reaches the target, the Sheriff opens the books and reveals what happened.</p>
+        <div class="audit-line"><span>$0</span><span>$100,000</span></div>
+        <div class="progress light-progress"><span id="auditBar"></span></div>
+        <p class="micro">The Audit unlocks at the end of Tax Season.</p>
+      </div>
+    </section>
+
+    <section class="closing shell">
+      <p class="eyebrow">OFFICE OF VOLUNTARY TAXATION</p>
+      <h2>Pay your taxes.<br><em>Get absolutely nothing.</em></h2>
+      <p>The Sheriff guarantees it.</p>
+      <a class="button button-dark" href="#pay">ENTER JURISDICTION ↗</a>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <span>THE SHERIFF'S TAX © 2026</span>
+    <span>NO TOKEN • NO UTILITY • NO PROMISES</span>
+    <a href="#top">BACK TO TOP ↑</a>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
