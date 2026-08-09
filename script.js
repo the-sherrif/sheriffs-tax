@@ -77,6 +77,8 @@ function updateTreasury() {
       "UPDATED " +
       new Date().toLocaleTimeString();
   }
+
+  updateVault();
 }
 
 function toast(message) {
