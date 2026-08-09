@@ -23,6 +23,11 @@ const NETWORK = "Robinhood Chain";
 const COINGECKO_URL =
   "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd";
 
+const VAULT_TARGET = 100000;
+
+let vaultClosed = false;
+let snapshotTaken = false;
+
 const $ = (id) => document.getElementById(id);
 
 function money(value) {
