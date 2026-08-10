@@ -27,6 +27,7 @@ const VAULT_TARGET = 100000;
 
 let vaultClosed = false;
 let snapshotTaken = false;
+let lastCoinCount = 0;
 
 const $ = (id) => document.getElementById(id);
 
@@ -132,7 +133,7 @@ function updatePiggy() {
     $("piggyState").textContent = "THE PIG IS STARVING. SEND TAXES.";
   }
 
-  /* Update coin animation */
+  /* Update coin display */
   const coinCount = Math.max(0, Math.floor(pct / 5));
   updateCoinDisplay(coinCount);
 }
@@ -154,6 +155,14 @@ function updateCoinDisplay(count) {
     coin.style.animationDelay = i * 0.1 + "s";
     container.appendChild(coin);
   }
+
+  /* Update 3D piggy if available */
+  if (window.addCoins && window.clearCoins) {
+    window.clearCoins();
+    if (count > 0) {
+      window.addCoins(Math.min(count, 20));
+    }
+  }
 }
 
 function closePiggy() {
@@ -167,6 +176,11 @@ function closePiggy() {
 
   $("piggyClosed").classList.add("show");
   $("piggyNotice").classList.remove("show");
+
+  /* Update 3D piggy state */
+  if (window.updatePiggyBankState) {
+    window.updatePiggyBankState(state.treasury, true);
+  }
 
   toast("THE PIG IS FULL. SNAPSHOT TAKEN.");
 }
