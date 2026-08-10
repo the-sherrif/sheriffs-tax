@@ -82,103 +82,51 @@
     </section>
 
     <section id="piggy-bank" class="piggy-section">
-  <div class="shell">
-
-    <div class="piggy-header">
-      <div>
-        <p class="eyebrow">03 / THE SHERIFF'S PIGGY BANK</p>
-        <h2>The pig is<br><em>getting hungry.</em></h2>
-      </div>
-
-      <span class="status piggy-status">
-        <i></i> TAX COLLECTION OPEN
-      </span>
-    </div>
-
-    <div class="piggy-stage">
-
-      <div class="piggy-shadow"></div>
-
-      <div class="piggy-bank" id="piggyBank">
-
-        <div class="pig-body">
-          <div class="pig-ear pig-ear-left"></div>
-          <div class="pig-ear pig-ear-right"></div>
-
-          <div class="pig-eye pig-eye-left"></div>
-          <div class="pig-eye pig-eye-right"></div>
-
-          <div class="pig-snout">
-            <span></span>
-            <span></span>
+      <div class="shell">
+        <div class="piggy-header">
+          <div>
+            <p class="eyebrow">02A / THE SHERIFF'S PIGGY BANK</p>
+            <h2>The pig is<br><em>getting hungry.</em></h2>
           </div>
-
-          <div class="pig-slot"></div>
-
-          <div class="pig-coins" id="pigCoins"></div>
-
-          <div class="pig-leg pig-leg-1"></div>
-          <div class="pig-leg pig-leg-2"></div>
-          <div class="pig-leg pig-leg-3"></div>
-          <div class="pig-leg pig-leg-4"></div>
-
-          <div class="pig-tail"></div>
+          <span class="status piggy-status">
+            <i></i> <span id="piggyStatusText">TAX COLLECTION OPEN</span>
+          </span>
         </div>
 
+        <div class="piggy-3d-container">
+          <div id="piggy-3d-canvas"></div>
+          <div class="piggy-readout">
+            <div class="piggy-state" id="piggyState">THE PIG IS HUNGRY.</div>
+            <div class="piggy-amount" id="piggyAmount">$0.00</div>
+            <div class="piggy-progress">
+              <span id="piggyProgress"></span>
+            </div>
+            <div class="piggy-meta">
+              <span id="piggyPercent">0% FULL</span>
+              <span>$100,000 TARGET</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="piggy-notice" id="piggyNotice">
+          <strong>TAX COLLECTION IS OPEN.</strong>
+          <span>Send ETH or USDG on Robinhood Chain to the Sheriff's Treasury. Every confirmed deposit feeds the pig.</span>
+        </div>
+
+        <div class="piggy-closed" id="piggyClosed">
+          <div class="closed-mark">✓</div>
+          <div>
+            <strong>THE PIG IS FULL.</strong>
+            <p>The $100,000 target has been reached. Tax collection is closed and the final taxpayer snapshot has been taken.</p>
+          </div>
+        </div>
+
+        <div class="piggy-late" id="piggyLate">
+          <strong>LATE DEPOSIT</strong>
+          <span>The pig was already full when this deposit arrived. This payment is not qualified for the $100K snapshot.</span>
+        </div>
       </div>
-
-      <div class="piggy-readout">
-
-        <div class="piggy-state" id="piggyState">
-          THE PIG IS HUNGRY.
-        </div>
-
-        <div class="piggy-amount" id="piggyAmount">
-          $0.00
-        </div>
-
-        <div class="piggy-progress">
-          <span id="piggyProgress"></span>
-        </div>
-
-        <div class="piggy-meta">
-          <span id="piggyPercent">0% FULL</span>
-          <span>$100,000 TARGET</span>
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="piggy-notice" id="piggyNotice">
-      <strong>TAX COLLECTION IS OPEN.</strong>
-      <span>
-        Send ETH or USDG on Robinhood Chain to the Sheriff's Treasury.
-        Every confirmed deposit feeds the pig.
-      </span>
-    </div>
-
-    <div class="piggy-closed" id="piggyClosed">
-      <div class="closed-mark">✓</div>
-      <div>
-        <strong>THE PIG IS FULL.</strong>
-        <p>
-          The $100,000 target has been reached. Tax collection is closed
-          and the final taxpayer snapshot has been taken.
-        </p>
-      </div>
-    </div>
-
-    <div class="piggy-late" id="piggyLate">
-      <strong>LATE DEPOSIT</strong>
-      <span>
-        The pig was already full when this deposit arrived.
-        This payment is not qualified for the $100K snapshot.
-      </span>
-    </div>
-
-  </div>
-</section>
+    </section>
 
     <section id="tax-code" class="section paper-section">
       <div class="shell">
@@ -334,6 +282,19 @@
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Three.js Import Maps -->
+  <script async src="https://unpkg.com"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com",
+        "three/addons/": "https://unpkg.com"
+      }
+    }
+  </script>
+
   <script src="script.js"></script>
+  <script src="piggy-3d.js"></script>
 </body>
 </html>
