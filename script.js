@@ -78,7 +78,7 @@ function updateTreasury() {
       new Date().toLocaleTimeString();
   }
 
-  updateVault();
+  updatePiggy();
 }
 
 function toast(message) {
@@ -97,77 +97,78 @@ function toast(message) {
   );
 }
 
-function updateVault() {
+function updatePiggy() {
   const amount = state.treasury;
   const pct = Math.min((amount / VAULT_TARGET) * 100, 100);
   const remaining = Math.max(VAULT_TARGET - amount, 0);
 
-  $("vaultAmount").textContent = money(amount);
-  $("vaultRemaining").textContent = money(remaining);
-  $("vaultPercent").textContent = Math.floor(pct) + "%";
+  $("piggyAmount").textContent = money(amount);
+  $("piggyPercent").textContent = Math.floor(pct) + "% FULL";
+  $("piggyProgress").style.width = pct + "%";
 
   if (vaultClosed) {
-    $("vaultStatus").innerHTML = "<i></i> VAULT SEALED";
-    $("vaultLock").textContent = "SEALED";
-    $("vaultMessage").textContent =
-      "The $100,000 target has been reached. The Sheriff has taken the snapshot.";
-
-    $("snapshotBanner").classList.add("show");
-    $("lateNotice").classList.add("show");
-
-    $("vaultLeft").style.transform = "translateX(0)";
-    $("vaultRight").style.transform = "translateX(0)";
-
+    $("piggyStatus").innerHTML = "<i></i> PIG IS FULL";
+    $("piggyState").textContent = "THE PIG IS FULL.";
+    $("piggyNotice").classList.remove("show");
+    $("piggyClosed").classList.add("show");
+    $("piggyLate").classList.remove("show");
     return;
   }
 
-  $("snapshotBanner").classList.remove("show");
-  $("lateNotice").classList.remove("show");
+  $("piggyNotice").classList.add("show");
+  $("piggyClosed").classList.remove("show");
 
   if (pct >= 95) {
-    $("vaultStatus").innerHTML = "<i></i> FINAL CALL";
-    $("vaultLock").textContent = "FINAL";
-    $("vaultMessage").textContent =
-      "The Vault is almost closed. Every qualified deposit counts.";
-
+    $("piggyStatus").innerHTML = "<i></i> PIG ALMOST FULL";
+    $("piggyState").textContent = "THE PIG IS ALMOST FULL. ONE MORE DEPOSIT.";
   } else if (pct >= 75) {
-    $("vaultStatus").innerHTML = "<i></i> VAULT CLOSING";
-    $("vaultLock").textContent = "CLOSING";
-    $("vaultMessage").textContent =
-      "The Sheriff is getting nervous. The Vault is closing.";
-
+    $("piggyStatus").innerHTML = "<i></i> PIG GETTING FULL";
+    $("piggyState").textContent = "THE PIG IS GETTING FULL. KEEP FEEDING.";
+  } else if (pct >= 50) {
+    $("piggyStatus").innerHTML = "<i></i> PIG IS HUNGRY";
+    $("piggyState").textContent = "THE PIG IS HUNGRY. FEED ME MORE.";
   } else {
-    $("vaultStatus").innerHTML = "<i></i> VAULT OPEN";
-    $("vaultLock").textContent = "OPEN";
-    $("vaultMessage").textContent =
-      "The Sheriff is accepting taxes. The Vault remains open.";
+    $("piggyStatus").innerHTML = "<i></i> PIG IS STARVING";
+    $("piggyState").textContent = "THE PIG IS STARVING. SEND TAXES.";
   }
 
-  const doorAmount = pct * 0.45;
-
-  $("vaultLeft").style.transform =
-    `translateX(${doorAmount}%)`;
-
-  $("vaultRight").style.transform =
-    `translateX(-${doorAmount}%)`;
+  /* Update coin animation */
+  const coinCount = Math.max(0, Math.floor(pct / 5));
+  updateCoinDisplay(coinCount);
 }
 
-function closeVault() {
+function updateCoinDisplay(count) {
+  const container = $("pigCoins");
+  if (!container) return;
+
+  /* Clear existing coins */
+  container.innerHTML = "";
+
+  /* Create coin elements based on percentage */
+  for (let i = 0; i < count; i++) {
+    const coin = document.createElement("div");
+    coin.className = "pig-coin";
+    coin.textContent = "$";
+    coin.style.left = Math.random() * 80 - 40 + "px";
+    coin.style.top = Math.random() * 40 - 20 + "px";
+    coin.style.animationDelay = i * 0.1 + "s";
+    container.appendChild(coin);
+  }
+}
+
+function closePiggy() {
   if (vaultClosed) return;
 
   vaultClosed = true;
   snapshotTaken = true;
 
-  $("vaultStatus").innerHTML = "<i></i> VAULT SEALED";
-  $("vaultLock").textContent = "SEALED";
+  $("piggyStatus").innerHTML = "<i></i> PIG IS FULL";
+  $("piggyState").textContent = "THE PIG IS FULL.";
 
-  $("vaultMessage").textContent =
-    "SNAPSHOT TAKEN. THE QUALIFIED TAXPAYER ROLL IS FINAL.";
+  $("piggyClosed").classList.add("show");
+  $("piggyNotice").classList.remove("show");
 
-  $("snapshotBanner").classList.add("show");
-  $("lateNotice").classList.add("show");
-
-  toast("THE VAULT IS SEALED. SNAPSHOT TAKEN.");
+  toast("THE PIG IS FULL. SNAPSHOT TAKEN.");
 }
 
 /* -------------------------
@@ -405,7 +406,10 @@ async function refreshTreasury() {
 
     /* Check if Treasury has crossed the threshold */
     if (state.treasury >= VAULT_TARGET) {
-      closeVault();
+      closePiggy();
+    } else if (vaultClosed) {
+      /* Deposit after closing - mark as late */
+      $("piggyLate").classList.add("show");
     }
 
     console.log(
