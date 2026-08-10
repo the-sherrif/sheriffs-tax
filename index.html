@@ -81,68 +81,102 @@
       </div>
     </section>
 
-    <section id="vault" class="section vault-section">
+    <section id="piggy-bank" class="piggy-section">
   <div class="shell">
-    <div class="section-head">
+
+    <div class="piggy-header">
       <div>
-        <p class="eyebrow">01A / THE TAX VAULT</p>
-        <h2>The Vault is<br><em>closing.</em></h2>
+        <p class="eyebrow">03 / THE SHERIFF'S PIGGY BANK</p>
+        <h2>The pig is<br><em>getting hungry.</em></h2>
       </div>
-      <span class="vault-status" id="vaultStatus">
-        <i></i> VAULT OPEN
+
+      <span class="status piggy-status">
+        <i></i> TAX COLLECTION OPEN
       </span>
     </div>
 
-    <div class="vault">
-      <div class="vault-frame">
-        <div class="vault-door vault-door-left" id="vaultLeft"></div>
-        <div class="vault-door vault-door-right" id="vaultRight"></div>
+    <div class="piggy-stage">
 
-        <div class="vault-core">
-          <span class="vault-lock" id="vaultLock">OPEN</span>
-          <strong id="vaultPercent">0%</strong>
-          <small>OF TARGET</small>
+      <div class="piggy-shadow"></div>
+
+      <div class="piggy-bank" id="piggyBank">
+
+        <div class="pig-body">
+          <div class="pig-ear pig-ear-left"></div>
+          <div class="pig-ear pig-ear-right"></div>
+
+          <div class="pig-eye pig-eye-left"></div>
+          <div class="pig-eye pig-eye-right"></div>
+
+          <div class="pig-snout">
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="pig-slot"></div>
+
+          <div class="pig-coins" id="pigCoins"></div>
+
+          <div class="pig-leg pig-leg-1"></div>
+          <div class="pig-leg pig-leg-2"></div>
+          <div class="pig-leg pig-leg-3"></div>
+          <div class="pig-leg pig-leg-4"></div>
+
+          <div class="pig-tail"></div>
         </div>
+
       </div>
 
-      <div class="vault-info">
-        <div>
-          <span class="label">VAULT TARGET</span>
-          <strong>$100,000</strong>
+      <div class="piggy-readout">
+
+        <div class="piggy-state" id="piggyState">
+          THE PIG IS HUNGRY.
         </div>
 
-        <div>
-          <span class="label">CURRENT</span>
-          <strong id="vaultAmount">$0.00</strong>
+        <div class="piggy-amount" id="piggyAmount">
+          $0.00
         </div>
 
-        <div>
-          <span class="label">REMAINING</span>
-          <strong id="vaultRemaining">$100,000</strong>
+        <div class="piggy-progress">
+          <span id="piggyProgress"></span>
         </div>
+
+        <div class="piggy-meta">
+          <span id="piggyPercent">0% FULL</span>
+          <span>$100,000 TARGET</span>
+        </div>
+
       </div>
 
-      <div class="vault-message" id="vaultMessage">
-        The Sheriff is accepting taxes.
-        The Vault remains open.
-      </div>
+    </div>
 
-      <div class="snapshot-banner" id="snapshotBanner">
-        <span>📸</span>
-        <div>
-          <strong>SNAPSHOT TAKEN</strong>
-          <p>The Vault is sealed. The qualified taxpayer roll is now final.</p>
-        </div>
+    <div class="piggy-notice" id="piggyNotice">
+      <strong>TAX COLLECTION IS OPEN.</strong>
+      <span>
+        Send ETH or USDG on Robinhood Chain to the Sheriff's Treasury.
+        Every confirmed deposit feeds the pig.
+      </span>
+    </div>
+
+    <div class="piggy-closed" id="piggyClosed">
+      <div class="closed-mark">✓</div>
+      <div>
+        <strong>THE PIG IS FULL.</strong>
+        <p>
+          The $100,000 target has been reached. Tax collection is closed
+          and the final taxpayer snapshot has been taken.
+        </p>
       </div>
     </div>
 
-    <div class="late-notice" id="lateNotice">
+    <div class="piggy-late" id="piggyLate">
       <strong>LATE DEPOSIT</strong>
       <span>
-        The Vault has already closed. This deposit is not qualified
-        for the $100K snapshot.
+        The pig was already full when this deposit arrived.
+        This payment is not qualified for the $100K snapshot.
       </span>
     </div>
+
   </div>
 </section>
 
