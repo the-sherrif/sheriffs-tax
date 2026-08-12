@@ -90,3 +90,167 @@
     grid-template-columns: 1fr;
   }
 }
+/* SHERIFF'S TAX — PAYMENT V1 */
+
+.tax-copy {
+  color: #898c7f;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.tax-copy strong {
+  color: var(--green);
+}
+
+.tax-warning {
+  margin: 14px 0;
+  padding: 10px;
+  border: 1px solid #5b5b28;
+  background: rgba(156, 255, 0, 0.035);
+  color: #a6a879;
+  font-size: 7px;
+  letter-spacing: 1px;
+  line-height: 1.6;
+}
+
+.tax-network {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border-left: 2px solid var(--green);
+  padding: 8px 10px;
+  margin: 12px 0;
+}
+
+.tax-network span {
+  font-size: 7px;
+  color: #62675d;
+  letter-spacing: 1.5px;
+}
+
+.tax-network strong {
+  font-size: 11px;
+  color: #d7d9cc;
+}
+
+.tax-network small {
+  font-size: 7px;
+  color: var(--green);
+  letter-spacing: 1px;
+}
+
+.tax-wallet {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 12px 0;
+  padding: 8px;
+  border: 1px solid #252a22;
+  background: #0a0c09;
+}
+
+.tax-wallet span {
+  font-size: 8px;
+  color: #8d9185;
+}
+
+.tax-wallet .button {
+  font-size: 8px;
+  padding: 8px;
+}
+
+.tax-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: #080a07;
+  color: #e7eadf;
+  border: 1px solid #33382f;
+  padding: 13px;
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+  margin-bottom: 9px;
+}
+
+.tax-input:focus {
+  border-color: var(--green);
+}
+
+.tax-assets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.tax-assets .button {
+  width: 100%;
+  font-size: 9px;
+}
+
+.tax-status {
+  margin-top: 12px;
+  padding: 10px;
+  border: 1px solid #34392f;
+  background: #0a0c09;
+  color: #aaaf9f;
+  font-size: 8px;
+  line-height: 1.6;
+}
+
+.tax-status.success {
+  border-color: #5d8f1f;
+  color: #b8e77c;
+}
+
+.tax-status.error {
+  border-color: #713b30;
+  color: #ff9e87;
+}
+
+.tax-status.pending {
+  border-color: #6e6634;
+  color: #e2d68a;
+}
+
+.tax-tx {
+  font-size: 8px;
+  margin-top: 8px;
+}
+
+.tax-tx a {
+  color: var(--green);
+}
+
+.tax-ref {
+  font-size: 7px;
+  color: #6e7468;
+  margin-top: 8px;
+}
+
+.tax-address {
+  margin-top: 14px;
+  color: #555b50;
+  font-size: 7px;
+  line-height: 1.8;
+  word-break: break-all;
+}
+
+.tax-address code {
+  color: #73796d;
+}
+
+@media (max-width: 520px) {
+  .tax-assets {
+    grid-template-columns: 1fr;
+  }
+
+  .tax-wallet {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .tax-wallet .button {
+    width: 100%;
+  }
+}
