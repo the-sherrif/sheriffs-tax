@@ -18,7 +18,18 @@
 <section class="dashboard shell" id="roll"><div class="panel taxpayers"><div class="panel-heading"><div><p class="eyebrow">PUBLIC RECORD</p><h2>RECENT TAXPAYERS</h2></div><a href="#roll">VIEW ALL →</a></div><div class="table"><div class="table-row table-head"><span>CITIZEN</span><span>AMOUNT</span><span>TIME</span></div><div id="taxpayerRows"></div></div><p class="panel-note" id="rollNote">The roll is public. Every tax is remembered.</p></div>
 <aside class="wanted panel"><p class="eyebrow">YOUR STATUS</p><div class="status-badge"><span>★</span><strong>CITIZEN</strong><small>IN GOOD STANDING</small></div><p>Pay your taxes and climb the ranks.</p><div class="rank-list"><div>★ CITIZEN</div><div>★ LAW-ABIDING CITIZEN</div><div>★ MODEL CITIZEN</div><div>★ TAX ENTHUSIAST</div><div>★ DEPUTY</div><div>★ SHERIFF'S FAVORITE</div></div></aside></section>
 <section class="three-col shell" id="code"><article class="paper panel"><p class="eyebrow">LAW OF THE LAND</p><h2>THE TAX CODE</h2><ol><li>There is no obligation to pay.</li><li>There is no benefit for paying.</li><li>All taxes are final.</li><li>The Sheriff keeps it all.</li><li>Obey or be outlawed.</li></ol><div class="signature">The Sheriff</div><a class="button button-outline" href="#how">READ THE FULL CODE</a></article>
-<article class="deputy panel" id="how">
+<section class="tax-payment panel" id="pay">
+<p class="eyebrow">THE TREASURY IS OPEN</p><h2>PAY YOUR TAX</h2>
+<p class="tax-copy">Send ETH or USDG directly to The Sheriff's Treasury. There is no token. There is no yield. There is no refund. <strong>You receive nothing.</strong></p>
+<div class="tax-warning">⚠ VOLUNTARY TAX · NO FINANCIAL RETURN · VERIFY THE ADDRESS BEFORE SIGNING</div>
+<div class="tax-network"><span>NETWORK</span><strong>ROBINHOOD CHAIN</strong><small>MAINNET · CHAIN 4663</small></div>
+<div class="tax-wallet"><span id="walletAddress">WALLET NOT CONNECTED</span><button class="button button-outline" id="connectTax" type="button">CONNECT WALLET</button></div>
+<label class="ref-label" for="taxAmount">TAX AMOUNT</label><input id="taxAmount" class="tax-input" type="number" min="0" step="any" placeholder="0.00">
+<div class="tax-assets"><button class="button button-green" id="payEth" type="button">PAY IN ETH</button><button class="button button-outline" id="payUsdg" type="button">PAY IN USDG</button></div>
+<div id="taxStatus" class="tax-status" hidden></div><div id="taxTx" class="tax-tx"></div><div id="taxRef" class="tax-ref"></div>
+<p class="tax-address">TREASURY<br><code>0xDfC4b31B8d67074C5fa09197C8FE076eeED0E280</code></p>
+</section>
+  <article class="deputy panel" id="how">
   <p class="eyebrow">SPREAD THE JURISDICTION</p>
 
   <h2>DEPUTIZE AN OUTLAW</h2>
