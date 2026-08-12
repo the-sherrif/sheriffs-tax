@@ -18,8 +18,60 @@
 <section class="dashboard shell" id="roll"><div class="panel taxpayers"><div class="panel-heading"><div><p class="eyebrow">PUBLIC RECORD</p><h2>RECENT TAXPAYERS</h2></div><a href="#roll">VIEW ALL →</a></div><div class="table"><div class="table-row table-head"><span>CITIZEN</span><span>AMOUNT</span><span>TIME</span></div><div id="taxpayerRows"></div></div><p class="panel-note" id="rollNote">The roll is public. Every tax is remembered.</p></div>
 <aside class="wanted panel"><p class="eyebrow">YOUR STATUS</p><div class="status-badge"><span>★</span><strong>CITIZEN</strong><small>IN GOOD STANDING</small></div><p>Pay your taxes and climb the ranks.</p><div class="rank-list"><div>★ CITIZEN</div><div>★ LAW-ABIDING CITIZEN</div><div>★ MODEL CITIZEN</div><div>★ TAX ENTHUSIAST</div><div>★ DEPUTY</div><div>★ SHERIFF'S FAVORITE</div></div></aside></section>
 <section class="three-col shell" id="code"><article class="paper panel"><p class="eyebrow">LAW OF THE LAND</p><h2>THE TAX CODE</h2><ol><li>There is no obligation to pay.</li><li>There is no benefit for paying.</li><li>All taxes are final.</li><li>The Sheriff keeps it all.</li><li>Obey or be outlawed.</li></ol><div class="signature">The Sheriff</div><a class="button button-outline" href="#how">READ THE FULL CODE</a></article>
-<article class="deputy panel" id="how"><p class="eyebrow">SPREAD THE JURISDICTION</p><h2>DEPUTIZE AN OUTLAW</h2><p>Bring another citizen into the jurisdiction. Your referral is your deputy badge.</p><div class="ref-box">sheriffs-tax.is-a.dev/?ref=YOUR_ADDRESS</div><div class="mini-stats"><div><strong>0</strong><span>DEPUTIZED</span></div><div><strong>0.00 ETH</strong><span>TAXES FROM DEPUTIES</span></div></div><button class="button button-green" id="copyRef">COPY DEPUTY LINK</button></article>
-<article class="outlaws panel"><p class="eyebrow">WANTED</p><h2>TOP TAX DODGERS</h2><div class="outlaw"><span>♞</span><div><strong>0xD3...4AF</strong><small>AVOIDED TAXES · 2.42 ETH</small></div><b>REWARD<br>0.42 ETH</b></div><div class="outlaw"><span>♞</span><div><strong>0xB7...12C</strong><small>AVOIDED TAXES · 1.91 ETH</small></div><b>REWARD<br>0.25 ETH</b></div><div class="outlaw"><span>♞</span><div><strong>0x9E...F23</strong><small>AVOIDED TAXES · 1.20 ETH</small></div><b>REWARD<br>0.15 ETH</b></div><p class="disclaimer">Demo placeholders until the live taxpayer feed is connected.</p></article></section>
+<article class="deputy panel" id="how">
+  <p class="eyebrow">SPREAD THE JURISDICTION</p>
+
+  <h2>DEPUTIZE AN OUTLAW</h2>
+
+  <p class="deputy-lede">
+    You paid your tax. Now recruit another citizen.
+    Every taxpayer gets a Deputy identity and a personal recruitment link.
+  </p>
+
+  <div class="deputy-seal">
+    <span>★</span>
+    <strong>DEPUTY</strong>
+    <small id="deputyId">DXXXXXXX</small>
+  </div>
+
+  <div class="ref-notice" id="refNotice" hidden>
+    <span>🚨</span>
+    <strong id="refNoticeText"></strong>
+  </div>
+
+  <label class="ref-label">YOUR DEPUTY LINK</label>
+
+  <div class="ref-box" id="refBox">
+    Generating your link...
+  </div>
+
+  <div class="mini-stats">
+    <div>
+      <strong id="copyCount">0</strong>
+      <span>LINK SHARES</span>
+    </div>
+
+    <div>
+      <strong>—</strong>
+      <span>CITIZENS RECRUITED</span>
+    </div>
+  </div>
+
+  <div class="deputy-actions">
+    <button class="button button-green" type="button" id="copyRef">
+      COPY DEPUTY LINK
+    </button>
+
+    <button class="button button-outline" type="button" id="shareRef">
+      SHARE →
+    </button>
+  </div>
+
+  <p class="deputy-footnote">
+    Referral counts become official when the live payment system is connected.
+    No financial rewards are promised for referrals.
+  </p>
+</article><article class="outlaws panel"><p class="eyebrow">WANTED</p><h2>TOP TAX DODGERS</h2><div class="outlaw"><span>♞</span><div><strong>0xD3...4AF</strong><small>AVOIDED TAXES · 2.42 ETH</small></div><b>REWARD<br>0.42 ETH</b></div><div class="outlaw"><span>♞</span><div><strong>0xB7...12C</strong><small>AVOIDED TAXES · 1.91 ETH</small></div><b>REWARD<br>0.25 ETH</b></div><div class="outlaw"><span>♞</span><div><strong>0x9E...F23</strong><small>AVOIDED TAXES · 1.20 ETH</small></div><b>REWARD<br>0.15 ETH</b></div><p class="disclaimer">Demo placeholders until the live taxpayer feed is connected.</p></article></section>
 <section class="payment shell" id="tax-payment"><div><p class="eyebrow">OFFICE OF VOLUNTARY TAXATION</p><h2>READY TO PAY YOUR DUES?</h2><p>No token. No claim. No upside. You send ETH because the Sheriff asked nicely.</p></div><button class="button button-green big" id="connectWallet">CONNECT WALLET →</button></section></main>
 <footer class="footer shell"><div class="brand"><span class="brand-badge">★</span><span><strong>THE SHERIFF'S TAX</strong><small>JURISDICTION: THE TIMELINE</small></span></div><p>Crypto has a thousand ways to take your money.<br><strong>This is the only one honest enough to call it tax.</strong></p><span>— THE SHERIFF</span></footer>
 <script src="script.js"></script></body></html>
