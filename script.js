@@ -107,3 +107,20 @@ function bindDeputyButtons() {
 
 renderDeputy();
 bindDeputyButtons();
+const SHERIFF_TREASURY="0xDfC4b31B8d67074C5fa09197C8FE076eeED0E280";
+const CHAIN_ID="0x1237";
+const RH_CHAIN={chainId:CHAIN_ID,chainName:"Robinhood Chain",nativeCurrency:{name:"Ether",symbol:"ETH",decimals:18},rpcUrls:["https://rpc.mainnet.chain.robinhood.com"],blockExplorerUrls:["https://robinhoodchain.blockscout.com"]};
+const USDG={address:"0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",decimals:6};
+const REF_KEY="sheriffs_tax_referrer";
+const $=id=>document.getElementById(id);
+
+function status(msg,type=""){const x=$("taxStatus");if(!x)return;x.textContent=msg;x.className="tax-status "+type;x.hidden=false}
+function provider(){if(!window.ethereum)throw Error("NO_WALLET");return window.ethereum}
+async function network(){const p=provider();if(await p.request({method:"eth_chainId"})===CHAIN_ID)return;try{await p.request({method:"wallet_switchEthereumChain",params:[{chainId:CHAIN_ID}]})}catch(e){if(e.code!==4902)throw e;await p.request({method:"wallet_addEthereumChain",params:[RH_CHAIN]})}}
+function amount(v,d){if(!/^\d+(\.\d+)?$/.test(String(v).trim())||Number(v)<=0)throw Error("ENTER A VALID TAX AMOUNT.");const a=String(v).split("."),f=(a[1]||"").padEnd(d,"0").slice(0,d);return BigInt(a[0])*(10n**BigInt(d))+BigInt(f||0)}
+async function account(){const p=provider();let a=await p.request({method:"eth_accounts"});if(!a.length){await p.request({method:"eth_requestAccounts"});a=await p.request({method:"eth_accounts"})}if(!a.length)throw Error("CONNECT YOUR WALLET FIRST.");return a[0]}
+async function connect(){try{await network();const a=await account();$("walletAddress").textContent=a.slice(0,6)+"..."+a.slice(-4);status("WALLET CONNECTED. SELECT YOUR TAX.","success");$("connectTax").textContent="WALLET CONNECTED"}catch(e){status(e.message==="NO_WALLET"?"NO EVM WALLET DETECTED. OPEN THIS SITE IN YOUR WALLET BROWSER.":e.message||"WALLET CONNECTION FAILED.","error")}}
+async function payETH(){try{await network();const from=await account(),v="0x"+amount($("taxAmount").value,18).toString(16);status("CONFIRM THE TAX IN YOUR WALLET. THE SHERIFF IS WAITING.","pending");const tx=await provider().request({method:"eth_sendTransaction",params:[{from,to:SHERIFF_TREASURY,value:v}]});success(tx,"ETH")}catch(e){status(e.message||"ETH PAYMENT FAILED OR WAS REJECTED.","error")}}
+async function payUSDG(){try{await network();const from=await account(),v=amount($("taxAmount").value,USDG.decimals);const data="0xa9059cbb"+SHERIFF_TREASURY.slice(2).padStart(64,"0")+v.toString(16).padStart(64,"0");status("CONFIRM THE USDG TAX IN YOUR WALLET. THE SHERIFF IS WAITING.","pending");const tx=await provider().request({method:"eth_sendTransaction",params:[{from,to:USDG.address,data}]});success(tx,"USDG")}catch(e){status(e.message||"USDG PAYMENT FAILED OR WAS REJECTED.","error")}}
+function success(tx,asset){status(`TAX PAID IN ${asset}. TRANSACTION SENT. THE SHERIFF HAS YOUR RECEIPT.`,"success");if($("taxTx"))$("taxTx").innerHTML=`<a href="https://robinhoodchain.blockscout.com/tx/${tx}" target="_blank" rel="noopener">VIEW TRANSACTION →</a>`;if($("taxRef"))$("taxRef").textContent=localStorage.getItem(REF_KEY)?`DEPUTY CREDIT: ${localStorage.getItem(REF_KEY)}`:"NO DEPUTY REFERRER DETECTED"}
+$("connectTax")?.addEventListener("click",connect);$("payEth")?.addEventListener("click",payETH);$("payUsdg")?.addEventListener("click",payUSDG);
