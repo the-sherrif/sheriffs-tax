@@ -24,7 +24,8 @@ const ROBINHOOD_CHAIN = {
 };
 
 const USDG = {
-  address: "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+  address:
+    "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
   decimals: 6
 };
 
@@ -50,32 +51,45 @@ function makeDeputyId() {
   return id;
 }
 
-
 function getOrCreateDeputyId() {
-  let id = localStorage.getItem(DEPUTY_KEY);
+  let id =
+    localStorage.getItem(DEPUTY_KEY);
 
   if (!id) {
     id = makeDeputyId();
-    localStorage.setItem(DEPUTY_KEY, id);
+    localStorage.setItem(
+      DEPUTY_KEY,
+      id
+    );
   }
 
   return id;
 }
 
-
 function getReferrer() {
   const incoming =
-    new URLSearchParams(window.location.search)
-      .get("ref");
+    new URLSearchParams(
+      window.location.search
+    ).get("ref");
 
-  if (incoming && incoming.length <= 120) {
-    localStorage.setItem(REF_KEY, incoming);
+  if (
+    incoming &&
+    incoming.length <= 120
+  ) {
+    localStorage.setItem(
+      REF_KEY,
+      incoming
+    );
+
     return incoming;
   }
 
-  return localStorage.getItem(REF_KEY) || "";
+  return (
+    localStorage.getItem(
+      REF_KEY
+    ) || ""
+  );
 }
-
 
 function getDeputyLink() {
   return `${window.location.origin}${window.location.pathname}?ref=${encodeURIComponent(
@@ -83,46 +97,66 @@ function getDeputyLink() {
   )}`;
 }
 
-
 function renderDeputy() {
-  const id = getOrCreateDeputyId();
-  const referrer = getReferrer();
+  const id =
+    getOrCreateDeputyId();
+
+  const referrer =
+    getReferrer();
 
   if ($("deputyId")) {
     $("deputyId").textContent = id;
   }
 
   if ($("refBox")) {
-    $("refBox").textContent = getDeputyLink();
+    $("refBox").textContent =
+      getDeputyLink();
   }
 
   if ($("copyCount")) {
     $("copyCount").textContent =
-      localStorage.getItem(COPY_KEY) || "0";
+      localStorage.getItem(
+        COPY_KEY
+      ) || "0";
   }
 
-  if ($("refNotice") && $("refNoticeText")) {
-    if (referrer && referrer !== id) {
-      $("refNotice").hidden = false;
+  if (
+    $("refNotice") &&
+    $("refNoticeText")
+  ) {
+    if (
+      referrer &&
+      referrer !== id
+    ) {
+      $("refNotice").hidden =
+        false;
 
       $("refNoticeText").textContent =
         `YOU WERE DEPUTIZED BY ${referrer}. YOUR TAX WILL CARRY THAT DEPUTY CREDIT.`;
     } else {
-      $("refNotice").hidden = true;
+      $("refNotice").hidden =
+        true;
     }
   }
 }
 
-
 async function copyDeputyLink() {
-  const button = $("copyRef");
-  const link = getDeputyLink();
+  const button =
+    $("copyRef");
+
+  const link =
+    getDeputyLink();
 
   try {
-    await navigator.clipboard.writeText(link);
+    await navigator.clipboard
+      .writeText(link);
 
     const count =
-      Number(localStorage.getItem(COPY_KEY) || 0) + 1;
+      Number(
+        localStorage.getItem(
+          COPY_KEY
+        ) || 0
+      ) + 1;
 
     localStorage.setItem(
       COPY_KEY,
@@ -130,7 +164,8 @@ async function copyDeputyLink() {
     );
 
     if ($("copyCount")) {
-      $("copyCount").textContent = count;
+      $("copyCount").textContent =
+        count;
     }
 
     if (button) {
@@ -147,18 +182,20 @@ async function copyDeputyLink() {
 
   } catch {
     if (button) {
-      button.textContent = link;
+      button.textContent =
+        link;
     }
   }
 }
 
-
 function shareDeputyLink() {
-  const link = getDeputyLink();
+  const link =
+    getDeputyLink();
 
   if (navigator.share) {
     navigator.share({
-      title: "The Sheriff's Tax",
+      title:
+        "The Sheriff's Tax",
       text:
         "The Sheriff is collecting taxes. I just got deputized. Your turn.",
       url: link
@@ -167,7 +204,6 @@ function shareDeputyLink() {
     copyDeputyLink();
   }
 }
-
 
 function bindDeputyButtons() {
   $("copyRef")?.addEventListener(
@@ -183,44 +219,120 @@ function bindDeputyButtons() {
 
 
 /* =========================
-   PAYMENT SYSTEM
+   PAYMENT STATE
 ========================= */
 
-function paymentStatus(message, type = "") {
-  const box = $("taxStatus");
+let selectedAsset = "ETH";
 
-  if (!box) return;
 
-  box.textContent = message;
-  box.className =
-    `tax-status ${type}`;
+function setSelectedAsset(asset) {
 
-  box.hidden = false;
+  selectedAsset = asset;
+
+  const eth =
+    $("payEth");
+
+  const usdg =
+    $("payUsdg");
+
+  if (!eth || !usdg) {
+    return;
+  }
+
+  if (asset === "ETH") {
+
+    eth.classList.add(
+      "button-green"
+    );
+
+    eth.classList.remove(
+      "button-outline"
+    );
+
+    usdg.classList.add(
+      "button-outline"
+    );
+
+    usdg.classList.remove(
+      "button-green"
+    );
+
+  } else {
+
+    usdg.classList.add(
+      "button-green"
+    );
+
+    usdg.classList.remove(
+      "button-outline"
+    );
+
+    eth.classList.add(
+      "button-outline"
+    );
+
+    eth.classList.remove(
+      "button-green"
+    );
+  }
 }
 
 
+/* =========================
+   PAYMENT SYSTEM
+========================= */
+
+function paymentStatus(
+  message,
+  type = ""
+) {
+  const box =
+    $("taxStatus");
+
+  if (!box) {
+    return;
+  }
+
+  box.textContent =
+    message;
+
+  box.className =
+    `tax-status ${type}`;
+
+  box.hidden =
+    false;
+}
+
 function getEthereum() {
   if (!window.ethereum) {
-    throw new Error("NO_WALLET");
+    throw new Error(
+      "NO_WALLET"
+    );
   }
 
   return window.ethereum;
 }
 
-
 async function ensureRobinhoodChain() {
-  const ethereum = getEthereum();
+
+  const ethereum =
+    getEthereum();
 
   const current =
     await ethereum.request({
-      method: "eth_chainId"
+      method:
+        "eth_chainId"
     });
 
-  if (current === ROBINHOOD_CHAIN_ID) {
+  if (
+    current ===
+    ROBINHOOD_CHAIN_ID
+  ) {
     return;
   }
 
   try {
+
     await ethereum.request({
       method:
         "wallet_switchEthereumChain",
@@ -250,8 +362,11 @@ async function ensureRobinhoodChain() {
   }
 }
 
+function parseUnits(
+  value,
+  decimals
+) {
 
-function parseUnits(value, decimals) {
   const clean =
     String(value).trim();
 
@@ -269,7 +384,10 @@ function parseUnits(value, decimals) {
     fraction = ""
   ] = clean.split(".");
 
-  if (fraction.length > decimals) {
+  if (
+    fraction.length >
+    decimals
+  ) {
     throw new Error(
       `MAXIMUM ${decimals} DECIMAL PLACES.`
     );
@@ -283,23 +401,24 @@ function parseUnits(value, decimals) {
 
   return (
     BigInt(whole) *
-      (10n ** BigInt(decimals))
-    +
+      (10n ** BigInt(decimals)) +
     BigInt(padded || "0")
   );
 }
 
-
 async function getAccount() {
+
   const ethereum =
     getEthereum();
 
   let accounts =
     await ethereum.request({
-      method: "eth_accounts"
+      method:
+        "eth_accounts"
     });
 
   if (!accounts.length) {
+
     accounts =
       await ethereum.request({
         method:
@@ -308,6 +427,7 @@ async function getAccount() {
   }
 
   if (!accounts.length) {
+
     throw new Error(
       "CONNECT YOUR WALLET FIRST."
     );
@@ -315,7 +435,6 @@ async function getAccount() {
 
   return accounts[0];
 }
-
 
 async function connectTaxWallet() {
 
@@ -327,24 +446,32 @@ async function connectTaxWallet() {
       await getAccount();
 
     if ($("walletAddress")) {
-      $("walletAddress").textContent =
-        `${account.slice(0, 6)}...${account.slice(-4)}`;
+
+      $("walletAddress")
+        .textContent =
+        `${account.slice(
+          0,
+          6
+        )}...${account.slice(-4)}`;
     }
 
     if ($("connectTax")) {
-      $("connectTax").textContent =
+
+      $("connectTax")
+        .textContent =
         "WALLET CONNECTED";
     }
 
     paymentStatus(
-      "WALLET CONNECTED. SELECT YOUR TAX.",
+      `WALLET CONNECTED. ${selectedAsset} TAX SELECTED.`,
       "success"
     );
 
   } catch (error) {
 
     paymentStatus(
-      error.message === "NO_WALLET"
+      error.message ===
+        "NO_WALLET"
         ? "NO EVM WALLET DETECTED. OPEN THIS SITE IN YOUR WALLET BROWSER."
         : error.message ||
           "WALLET CONNECTION FAILED.",
@@ -353,8 +480,10 @@ async function connectTaxWallet() {
   }
 }
 
-
-function showTaxSuccess(tx, asset) {
+function showTaxSuccess(
+  tx,
+  asset
+) {
 
   paymentStatus(
     `TAX SENT IN ${asset}. THE SHERIFF HAS YOUR RECEIPT.`,
@@ -380,7 +509,6 @@ function showTaxSuccess(tx, asset) {
         : "NO DEPUTY REFERRER DETECTED";
   }
 }
-
 
 async function payETH() {
 
@@ -411,8 +539,10 @@ async function payETH() {
         params: [
           {
             from,
+
             to:
               SHERIFF_TREASURY,
+
             value
           }
         ]
@@ -432,7 +562,6 @@ async function payETH() {
     );
   }
 }
-
 
 async function payUSDG() {
 
@@ -456,7 +585,10 @@ async function payUSDG() {
         .padStart(64, "0") +
       value
         .toString(16)
-        .padStart(64, "0");
+        .padStart(
+          64,
+          "0"
+        );
 
     paymentStatus(
       "CONFIRM THE USDG TAX IN YOUR WALLET. THE SHERIFF IS WAITING.",
@@ -472,8 +604,10 @@ async function payUSDG() {
         params: [
           {
             from,
+
             to:
               USDG.address,
+
             data
           }
         ]
@@ -495,6 +629,10 @@ async function payUSDG() {
 }
 
 
+/* =========================
+   PAYMENT BUTTONS
+========================= */
+
 function bindPaymentButtons() {
 
   $("connectTax")?.addEventListener(
@@ -504,12 +642,16 @@ function bindPaymentButtons() {
 
   $("payEth")?.addEventListener(
     "click",
-    payETH
+    () => {
+      setSelectedAsset("ETH");
+    }
   );
 
   $("payUsdg")?.addEventListener(
     "click",
-    payUSDG
+    () => {
+      setSelectedAsset("USDG");
+    }
   );
 }
 
@@ -519,5 +661,9 @@ function bindPaymentButtons() {
 ========================= */
 
 renderDeputy();
+
 bindDeputyButtons();
+
 bindPaymentButtons();
+
+setSelectedAsset("ETH");
